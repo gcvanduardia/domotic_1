@@ -1,1 +1,139 @@
+ion-content {
+	--padding-start: 0%;
+	--padding-end: 0%;
+	--padding-bottom: 5%;
+	--background: rgb(225, 234, 243);
+	--background: -moz-linear-gradient(-45deg,
+		rgba(225, 234, 243, 1) 0%,
+		rgba(218, 228, 242, 1) 26%,
+		rgba(211, 224, 241, 1) 51%,
+		rgba(194, 212, 236, 1) 51%,
+		rgba(202, 218, 240, 1) 62%,
+		rgba(208, 223, 244, 1) 75%,
+		rgba(187, 205, 231, 1) 88%,
+		rgba(166, 188, 218, 1) 100%);
+	--background: -webkit-linear-gradient(-45deg,
+		rgba(225, 234, 243, 1) 0%,
+		rgba(218, 228, 242, 1) 26%,
+		rgba(211, 224, 241, 1) 51%,
+		rgba(194, 212, 236, 1) 51%,
+		rgba(202, 218, 240, 1) 62%,
+		rgba(208, 223, 244, 1) 75%,
+		rgba(187, 205, 231, 1) 88%,
+		rgba(166, 188, 218, 1) 100%);
+	--background: linear-gradient(135deg,
+		rgba(225, 234, 243, 1) 0%,
+		rgba(218, 228, 242, 1) 26%,
+		rgba(211, 224, 241, 1) 51%,
+		rgba(194, 212, 236, 1) 51%,
+		rgba(202, 218, 240, 1) 62%,
+		rgba(208, 223, 244, 1) 75%,
+		rgba(187, 205, 231, 1) 88%,
+		rgba(166, 188, 218, 1) 100%);
+}
+
+ion-grid {
+	--ion-grid-padding: 1.5%;
+	--ion-grid-width: 100%;
+}
+
+ion-col {
+	--ion-grid-column-padding: 0%;
+}
+
+ion-card {
+	padding-top: 0px;
+	padding-bottom: 3%;
+	--background: white;
+	width: 97%;
+	height: 95.5%;
+	border-radius: 30px;
+	margin-bottom: 5px;
+	margin-top: 0px;
+	margin-left: 1.5%;
+	margin-right: 0px;
+}
+
+ion-slide {
+	width: 100%;
+	height: 100%;
+}
+
+ion-slides {
+	--bullet-background: rgba(0, 0, 0, 0.733);
+	padding-bottom: 6%;
+}
+h5{
+	padding-left: 5%;
+}
+
+.ion-avatar1 {
+	width: 20%;
+	height: auto;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.ion-avatar2 {
+	width: 20%;
+	height: auto;
+}
+
+.ion-avatar3 {
+	width: 40%;
+	height: auto;
+}
+
+.ion-chip1 {
+	width: 90%;
+	height: auto;
+}
+
+.ion-chip2 {
+	width: 100%;
+	height: auto;
+	padding-left: 6%;
+	padding-right: 4%;
+	padding-top: 0%;
+	padding-bottom: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.ion-chip3 {
+	width: 100%;
+	height: auto;
+	padding-left: 4%;
+	padding-right: 0%;
+	padding-top: 0%;
+	padding-bottom: 0%;
+}
+
+.TxtSmall {
+	font-size: 70%;
+}
+
+.card-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.texto-centrado {
+	// este esta ligado con ion-avatar3 70 - 30 %
+	width: 60%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.texto-centrado2 {
+	// este esta ligado con ion-avatar1 80 - 20 %
+	width: 80%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 

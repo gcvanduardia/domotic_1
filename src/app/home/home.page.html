@@ -1,12 +1,318 @@
-<ion-header>
+<ion-header color="light">
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title text-center color="primary"
+      >Hola {{ fireDB.nombreUsuario }}
     </ion-title>
+    <ion-text color="primary" class="TxtSmall" slot="end">
+      {{ fireDB.nombreSistema }}
+    </ion-text>
+    <ion-buttons slot="start">
+      <ion-button (click)="firstMenu()" color="primary">
+        <ion-icon slot="start" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content text-center>
+  <div *ngIf="fireDB.titulo == 'Recientes'">
+    <ion-text color="primary">
+      <h3>Recientes</h3>
+    </ion-text>
+    <ion-text text-left color="primary">
+      <h5>Dispositivos</h5>
+    </ion-text>
+    <ion-row class="row-slide-1">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let dispositivo of fireDB.dispositivos">
+          <ion-card>
+            <div>
+              <ion-chip color="ligth" class="ion-chip2">
+                <ion-avatar class="ion-avatar1">
+                  <img src="/assets/img/{{ dispositivo.icono }}" />
+                </ion-avatar>
+                <ion-text color="primary" class="texto-centrado2">
+                  <h6>{{ dispositivo.nombre | titlecase }}</h6>
+                </ion-text>
+              </ion-chip>
+              <!-- INTERRUPTORES -->
+              <div *ngIf="dispositivo.tipo == 'interruptor'">
+                <div *ngFor="let valor of dispositivo.valores; let i = index">
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar *ngIf="valor > 0" class="ion-avatar2">
+                      <img src="/assets/img/bombilloOn.png" />
+                    </ion-avatar>
+                    <ion-avatar *ngIf="valor == 0" class="ion-avatar2">
+                      <img src="/assets/img/bombillo.png" />
+                    </ion-avatar>
+                    <ion-label>luz {{ i + 1 }}: {{ valor }}%</ion-label>
+                  </ion-chip>
+                </div>
+                <!-- <br> -->
+              </div>
+              <!-- CORTINAS -->
+              <div *ngIf="dispositivo.tipo == 'cortina'">
+                <div>
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/arriba.png" />
+                    </ion-avatar>
+                    <ion-label>Arriba</ion-label>
+                  </ion-chip>
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/stop.png" />
+                    </ion-avatar>
+                    <ion-label>Detener</ion-label>
+                  </ion-chip>
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/abajo.png" />
+                    </ion-avatar>
+                    <ion-label>Abajo</ion-label>
+                  </ion-chip>
+                </div>
+                <!-- <br> -->
+              </div>
+              <!-- TOMACORRIENTES -->
+              <div *ngIf="dispositivo.tipo == 'toma-corriente'">
+                <div *ngFor="let valor of dispositivo.valores; let i = index">
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar *ngIf="valor == 'on'" class="ion-avatar2">
+                      <img src="/assets/img/conectado.png" />
+                    </ion-avatar>
+                    <ion-avatar *ngIf="valor == 'off'" class="ion-avatar2">
+                      <img src="/assets/img/desconectado.png" />
+                    </ion-avatar>
+                    <ion-label
+                      >toma {{ i + 1 }}: {{ valor | uppercase }}</ion-label
+                    >
+                  </ion-chip>
+                </div>
+                <!-- <br> -->
+              </div>
+              <!-- TV-SONIDO -->
+              <div *ngIf="dispositivo.tipo == 'tv-sonido'">
+                <div>
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/power.png" />
+                    </ion-avatar>
+                    <ion-label
+                      >power: {{ dispositivo.power | uppercase }}</ion-label
+                    >
+                  </ion-chip>
+                  <div *ngIf="dispositivo.power == 'on'">
+                    <ion-chip color="secondary" class="ion-chip1">
+                      <ion-avatar>
+                        <img src="/assets/img/canal.png" />
+                      </ion-avatar>
+                      <ion-label>canal: {{ dispositivo.canal }}</ion-label>
+                    </ion-chip>
+                    <ion-chip color="secondary" class="ion-chip1">
+                      <ion-avatar>
+                        <img src="/assets/img/volumen.png" />
+                      </ion-avatar>
+                      <ion-label>volumen: {{ dispositivo.volumen }}</ion-label>
+                    </ion-chip>
+                  </div>
+                </div>
+                <!-- <br> -->
+              </div>
+            </div>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+
+    <ion-text text-left color="primary">
+      <h5>Habitaciones</h5>
+    </ion-text>
+    <ion-row class="row-slide-2">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let habitacion of fireDB.habitaciones">
+          <ion-card class="card-center">
+            <ion-chip class="ion-chip3" color="light">
+              <ion-avatar class="ion-avatar3">
+                <img src="/assets/img/{{ habitacion.imagen }}" />
+              </ion-avatar>
+              <ion-text color="primary" class="texto-centrado">
+                <h6>{{ habitacion.nombre | titlecase }}</h6>
+              </ion-text>
+            </ion-chip>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+
+    <ion-text text-left color="primary">
+      <h5>Escenas</h5>
+    </ion-text>
+    <ion-row>
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let escena of fireDB.escenas">
+          <ion-card class="card-center">
+            <ion-chip color="ligth" class="ion-chip3">
+              <ion-avatar class="ion-avatar3">
+                <img src="/assets/img/{{ escena.imagen }}" />
+              </ion-avatar>
+              <ion-text color="primary" class="texto-centrado">
+                <h6>{{ escena.nombre | titlecase }}</h6>
+              </ion-text>
+            </ion-chip>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </div>
+
+  <ion-grid fixed *ngIf="fireDB.titulo == 'Dispositivos'">
+    <ion-text text-center color="primary">
+      <h4>Dispositivos</h4>
+    </ion-text>
+    <ion-row>
+      <ion-col *ngFor="let dispositivo of fireDB.dispositivos" size="6">
+        <ion-card>
+          <div>
+            <ion-chip color="ligth" class="ion-chip2" (click)="iraLuz()">
+              <ion-avatar class="ion-avatar1">
+                <img src="/assets/img/{{ dispositivo.icono }}" />
+              </ion-avatar>
+              <ion-text color="primary" class="texto-centrado2">
+                <h6>{{ dispositivo.nombre | titlecase }}</h6>
+              </ion-text>
+            </ion-chip>
+            <!-- INTERRUPTORES -->
+            <div *ngIf="dispositivo.tipo == 'interruptor'">
+              <div *ngFor="let valor of dispositivo.valores; let i = index">
+                <ion-chip
+                  color="secondary"
+                  class="ion-chip1"
+                  (click)="iraLuz()"
+                >
+                  <ion-avatar *ngIf="valor > 0" class="ion-avatar2">
+                    <img src="/assets/img/bombilloOn.png" />
+                  </ion-avatar>
+                  <ion-avatar *ngIf="valor == 0" class="ion-avatar2">
+                    <img src="/assets/img/bombillo.png" />
+                  </ion-avatar>
+                  <ion-label>luz {{ i + 1 }}: {{ valor }}%</ion-label>
+                </ion-chip>
+              </div>
+              <!-- <br> -->
+            </div>
+            <!-- CORTINAS -->
+            <div *ngIf="dispositivo.tipo == 'cortina'">
+              <div>
+                <ion-chip color="secondary" class="ion-chip1">
+                  <ion-avatar>
+                    <img src="/assets/img/arriba.png" />
+                  </ion-avatar>
+                  <ion-label>Arriba</ion-label>
+                </ion-chip>
+                <ion-chip color="secondary" class="ion-chip1">
+                  <ion-avatar>
+                    <img src="/assets/img/stop.png" />
+                  </ion-avatar>
+                  <ion-label>Detener</ion-label>
+                </ion-chip>
+                <ion-chip color="secondary" class="ion-chip1">
+                  <ion-avatar>
+                    <img src="/assets/img/abajo.png" />
+                  </ion-avatar>
+                  <ion-label>Abajo</ion-label>
+                </ion-chip>
+              </div>
+              <!-- <br> -->
+            </div>
+            <!-- TOMACORRIENTES -->
+            <div *ngIf="dispositivo.tipo == 'toma-corriente'">
+              <div *ngFor="let valor of dispositivo.valores; let i = index">
+                <ion-chip color="secondary" class="ion-chip1">
+                  <ion-avatar *ngIf="valor == 'on'" class="ion-avatar2">
+                    <img src="/assets/img/conectado.png" />
+                  </ion-avatar>
+                  <ion-avatar *ngIf="valor == 'off'" class="ion-avatar2">
+                    <img src="/assets/img/desconectado.png" />
+                  </ion-avatar>
+                  <ion-label
+                    >toma {{ i + 1 }}: {{ valor | uppercase }}</ion-label
+                  >
+                </ion-chip>
+              </div>
+              <!-- <br> -->
+            </div>
+            <!-- TV-SONIDO -->
+            <div *ngIf="dispositivo.tipo == 'tv-sonido'">
+              <div>
+                <ion-chip color="secondary" class="ion-chip1">
+                  <ion-avatar>
+                    <img src="/assets/img/power.png" />
+                  </ion-avatar>
+                  <ion-label
+                    >power: {{ dispositivo.power | uppercase }}</ion-label
+                  >
+                </ion-chip>
+                <div *ngIf="dispositivo.power == 'on'">
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/canal.png" />
+                    </ion-avatar>
+                    <ion-label>canal: {{ dispositivo.canal }}</ion-label>
+                  </ion-chip>
+                  <ion-chip color="secondary" class="ion-chip1">
+                    <ion-avatar>
+                      <img src="/assets/img/volumen.png" />
+                    </ion-avatar>
+                    <ion-label>volumen: {{ dispositivo.volumen }}</ion-label>
+                  </ion-chip>
+                </div>
+              </div>
+              <!-- <br> -->
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed *ngIf="fireDB.titulo == 'Habitaciones'">
+    <ion-text text-center color="primary">
+      <h4>Habitaciones</h4>
+    </ion-text>
+    <ion-row>
+      <ion-col size="6" *ngFor="let habitacion of fireDB.habitaciones">
+        <ion-card class="card-center">
+          <ion-chip class="ion-chip3" color="light">
+            <ion-avatar class="ion-avatar3">
+              <img src="/assets/img/{{ habitacion.imagen }}" />
+            </ion-avatar>
+            <ion-text color="primary" class="texto-centrado">
+              <h6>{{ habitacion.nombre | titlecase }}</h6>
+            </ion-text>
+          </ion-chip>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed *ngIf="fireDB.titulo == 'Escenas'">
+    <ion-text text-center color="primary">
+      <h4>Escenas</h4>
+    </ion-text>
+    <ion-row>
+      <ion-col size="6" *ngFor="let escena of fireDB.escenas">
+        <ion-card class="card-center">
+          <ion-chip color="ligth" class="ion-chip3">
+            <ion-avatar class="ion-avatar3">
+              <img src="/assets/img/{{ escena.imagen }}" />
+            </ion-avatar>
+            <ion-text color="primary" class="texto-centrado">
+              <h6>{{ escena.nombre | titlecase }}</h6>
+            </ion-text>
+          </ion-chip>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,0 +1,25 @@
+ion-content{
+    width: 100%;
+    height: 100%;
+    --padding-end: 0;
+    --background: rgb(225,234,243);
+    --background: -moz-linear-gradient(-45deg, rgba(225,234,243,1) 0%, rgba(218,228,242,1) 26%, rgba(211,224,241,1) 51%, rgba(194,212,236,1) 51%, rgba(202,218,240,1) 62%, rgba(208,223,244,1) 75%, rgba(187,205,231,1) 88%, rgba(166,188,218,1) 100%);
+    --background: -webkit-linear-gradient(-45deg, rgba(225,234,243,1) 0%,rgba(218,228,242,1) 26%,rgba(211,224,241,1) 51%,rgba(194,212,236,1) 51%,rgba(202,218,240,1) 62%,rgba(208,223,244,1) 75%,rgba(187,205,231,1) 88%,rgba(166,188,218,1) 100%);
+    --background: linear-gradient(135deg, rgba(225,234,243,1) 0%,rgba(218,228,242,1) 26%,rgba(211,224,241,1) 51%,rgba(194,212,236,1) 51%,rgba(202,218,240,1) 62%,rgba(208,223,244,1) 75%,rgba(187,205,231,1) 88%,rgba(166,188,218,1) 100%);
+}
+
+.contMedio {
+    position: absolute;
+    width: 90%;
+    height: auto;
+    top: 20%;
+    left: 6%;
+    right: 0%;
+    text-align: center;
+}
+
+ion-card {
+    width: 90%;
+    height: auto;
+    border-radius: 30px;
+}

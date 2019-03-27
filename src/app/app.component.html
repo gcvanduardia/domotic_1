@@ -1,3 +1,53 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar color="ligth">
+        <ion-title>Sistema {{fireDB.nombreSistema}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+
+        <ion-item color="light">
+          <ion-button (click)="agregarDispositivo()" fill="clear">
+            Agregar dispositivos <ion-icon slot="start" name="logo-reddit"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item color="light">
+          <ion-button (click)="agregarDispositivo()" fill="clear">
+            Crear habitaciones <ion-icon slot="start" name="expand"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item color="light">
+          <ion-button (click)="agregarDispositivo()" fill="clear">
+            Crear escenas <ion-icon slot="start" name="play"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item color="light">
+          <ion-button (click)="agregarDispositivo()" fill="clear">
+            Sistemas <ion-icon slot="start" name="apps"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item color="light">
+            <ion-button (click)="agregarDispositivo()" fill="clear">
+              Cuenta <ion-icon slot="start" name="contact"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+        <ion-item color="light">
+          <ion-button (click)="agregarDispositivo()" fill="clear">
+            Cerrar sesión <ion-icon slot="start" name="log-out"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>

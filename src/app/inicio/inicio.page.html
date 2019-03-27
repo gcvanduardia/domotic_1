@@ -1,0 +1,49 @@
+<ion-header color="light">
+  <ion-toolbar text-center>
+    <ion-title color="primary">Bienvenido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding text-center >
+
+  <div class="contMedio">
+    <ion-card>
+      <ion-item>
+        <ion-input type="email" placeholder="ingresa tu correo" text-center>
+          <ion-icon slot="start" name="mail"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Ingresa tu clave" text-center>
+          <ion-icon slot="start" name="key"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-button (click)="iniciarSesion()" expand="block" [routerLink]="['/tabs1']">
+        Iniciar
+      </ion-button>
+      <ion-item>
+        <ion-button (click)="recupContrasena()" fill="clear" slot="end">
+          Olvidaste tu contraseña?
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="recupContrasena()" fill="clear" slot="end">
+          Crear sistema nuevo
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- <ion-card>
+    <ion-card-title>Crear</ion-card-title>
+    <ion-button (click)="crearSistema()" expand="block">
+      Crear sistema nuevo
+    </ion-button>
+    <ion-item>
+      <ion-button (click)="recupContrasena()" fill="clear" slot="end">
+        Más información
+      </ion-button>
+    </ion-item>
+  </ion-card> -->
+
+
+</ion-content>
